@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PersonaRepository extends JpaRepository<PersonaEntity,Long> {
+
+    PersonaRepository findByNameAndDni(String name,String dni);
 }
