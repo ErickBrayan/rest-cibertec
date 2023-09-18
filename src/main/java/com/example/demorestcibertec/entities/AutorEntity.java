@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "autor")
 public class AutorEntity extends BaseEntity{
 
+    @Column(name = "name")
     private String name;
     @Column(name = "lastname")
     private String lastName;
