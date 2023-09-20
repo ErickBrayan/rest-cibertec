@@ -2,7 +2,7 @@ package com.example.demorestcibertec.controllers;
 
 import com.example.demorestcibertec.dtos.Message;
 import com.example.demorestcibertec.entities.PersonaEntity;
-import com.example.demorestcibertec.services.PersonaService;
+import com.example.demorestcibertec.services.PersonaServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +16,11 @@ import java.util.List;
 @RequestMapping("api/v1/personas")
 public class PersonaController {
 
-    private final PersonaService personaService;
+    private final PersonaServiceImpl personaServiceImpl;
 
     @GetMapping("")
     public ResponseEntity<?> findAll() throws Exception {
-        List<PersonaEntity> personaEntityList = personaService.findAll();
+        List<PersonaEntity> personaEntityList = personaServiceImpl.findAll();
         try {
 
             if (personaEntityList.isEmpty()){
@@ -34,7 +34,7 @@ public class PersonaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getOne(@PathVariable Long id) throws Exception {
-        PersonaEntity persona = personaService.findById(id);
+        PersonaEntity persona = personaServiceImpl.findById(id);
 
         try {
             if (persona != null){
@@ -51,7 +51,7 @@ public class PersonaController {
     public ResponseEntity<?> save(@RequestBody PersonaEntity personaEntity) throws Exception {
 
         try {
-            PersonaEntity persona = personaService.save(personaEntity);
+            PersonaEntity persona = personaServiceImpl.save(personaEntity);
             return new ResponseEntity<>(persona, HttpStatus.CREATED);
 
         }catch (Exception e){
@@ -63,7 +63,7 @@ public class PersonaController {
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody PersonaEntity personaEntity) throws Exception {
 
         try {
-            PersonaEntity persona = personaService.update(id,personaEntity);
+            PersonaEntity persona = personaServiceImpl.update(id,personaEntity);
             return new ResponseEntity<>(persona, HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>("error",HttpStatus.INTERNAL_SERVER_ERROR);
@@ -74,7 +74,7 @@ public class PersonaController {
     public ResponseEntity<?> delete(@PathVariable Long id) throws Exception {
 
         try {
-            boolean res = personaService.delete(id);
+            boolean res = personaServiceImpl.delete(id);
             return new ResponseEntity<>(res, HttpStatus.NO_CONTENT);
         }catch (Exception e){
             return new ResponseEntity<>("error",HttpStatus.INTERNAL_SERVER_ERROR);
