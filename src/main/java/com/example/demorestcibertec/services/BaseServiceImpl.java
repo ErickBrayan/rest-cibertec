@@ -1,5 +1,6 @@
 package com.example.demorestcibertec.services;
 
+import com.example.demorestcibertec.dtos.Message;
 import com.example.demorestcibertec.entities.BaseEntity;
 import com.example.demorestcibertec.entities.PersonaEntity;
 import com.example.demorestcibertec.repositories.BaseRepository;

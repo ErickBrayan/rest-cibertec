@@ -17,4 +17,5 @@ public class PersonaServiceImpl extends BaseServiceImpl<PersonaEntity,Long> impl
         super(baseRepository);
     }
 
+
 }
